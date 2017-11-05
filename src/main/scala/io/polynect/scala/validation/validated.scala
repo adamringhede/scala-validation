@@ -59,8 +59,8 @@ trait ValidatedOnce extends Validated {
   private var errors: Errors = Nil
   private var cached: Boolean = false
   override def getErrors: Errors = {
-    if (cached) {
-      this.errors = super.getErrors
+    if (!cached) {
+      errors = super.getErrors
       cached = true
     }
     errors
